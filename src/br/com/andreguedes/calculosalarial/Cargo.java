@@ -2,28 +2,24 @@ package br.com.andreguedes.calculosalarial;
 
 public enum Cargo {
 
-	DESENVOLVEDOR(3000, 0.8, 0.9), 
-	DBA(1500, 0.75, 0.85), 
-	TESTADOR(1500, 0.75, 0.85);
+	DESENVOLVEDOR(3000, new DezOuVintePorCento()), 
+	DBA(1500, new QuinzeOuVinteECincoPorCento()), 
+	TESTADOR(1500, new QuinzeOuVinteECincoPorCento());
 	
-	private double salarioBase, maiorDesconto, menorDesconto;
+	private double salarioBase;
+	private RegraDeCalculo regra;
 	
-	Cargo(double salarioBase, double maiorDesconto, double menorDesconto) {
+	Cargo(double salarioBase, RegraDeCalculo regra) {
 		this.salarioBase = salarioBase;
-		this.maiorDesconto = maiorDesconto;
-		this.menorDesconto = menorDesconto;
+		this.regra = regra;
 	}
 	
 	public double getSalarioBase() {
 		return salarioBase;
 	}
-
-	public double getMaiorDesconto() {
-		return maiorDesconto;
-	}
-
-	public double getMenorDesconto() {
-		return menorDesconto;
+	
+	public RegraDeCalculo getRegra() {
+		return regra;
 	}
 	
 }
