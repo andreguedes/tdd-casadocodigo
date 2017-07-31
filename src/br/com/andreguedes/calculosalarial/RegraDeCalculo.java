@@ -1,7 +1,15 @@
 package br.com.andreguedes.calculosalarial;
 
-public interface RegraDeCalculo {
+public abstract class RegraDeCalculo {
 
-	double calcula(Funcionario funcionario);
+	public double calcula(Funcionario funcionario) {
+		if (funcionario.getSalario() > limite())
+			return funcionario.getSalario() * porcentagemAcimaDoLimite();
+		return funcionario.getSalario() * porcentagemBase();
+	}
+	
+	protected abstract double limite();
+	protected abstract double porcentagemAcimaDoLimite();
+	protected abstract double porcentagemBase();
 	
 }

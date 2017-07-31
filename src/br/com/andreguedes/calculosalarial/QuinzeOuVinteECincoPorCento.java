@@ -1,13 +1,20 @@
 package br.com.andreguedes.calculosalarial;
 
-public class QuinzeOuVinteECincoPorCento implements RegraDeCalculo {
+public class QuinzeOuVinteECincoPorCento extends RegraDeCalculo {
 
 	@Override
-	public double calcula(Funcionario funcionario) {
-		if (funcionario.getSalario() < 2500) {
-			return funcionario.getSalario() * 0.85;
-		}
-		return funcionario.getSalario() * 0.75;
+	protected double limite() {
+		return 2500;
+	}
+
+	@Override
+	protected double porcentagemAcimaDoLimite() {
+		return 0.85;
+	}
+
+	@Override
+	protected double porcentagemBase() {
+		return 0.75;
 	}
 
 }
